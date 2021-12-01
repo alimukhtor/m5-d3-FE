@@ -13,11 +13,31 @@ export default class NewBlogPost extends Component {
   handleChange(value) {
     this.setState({ text: value });
   }
+  handleSubmit = async e => {
+    e.preventDefault()
+    try {
+        let response = await fetch('http://localhost:3004/author/', {
+            method: 'POST',
+            body: JSON.stringify(this.state.text),
+            headers: {
+                'Content-type': 'application/json'
+            }
+        })
 
+        if (response.ok) {
+            alert('OK!')
+           this.handleChange()
+        } else {
+            alert('ERROR')
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
   render() {
     return (
       <Container className="new-blog-container">
-        <Form className="mt-5">
+        <Form className="mt-5" onSubmit={this.handleSubmit}>
           <Form.Group controlId="blog-form" className="mt-3">
             <Form.Label>Title</Form.Label>
             <Form.Control size="lg" placeholder="Title" />
