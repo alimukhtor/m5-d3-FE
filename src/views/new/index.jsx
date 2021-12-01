@@ -4,28 +4,38 @@ import ReactQuill from "react-quill";
 import { Container, Form, Button } from "react-bootstrap";
 import "./styles.css";
 export default class NewBlogPost extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      title: "",  
-      text: "" ,
-      category: ""
+    state = {
+      blogPosts: {
+        title: "",
+        cover: "https://i.pinimg.com/474x/a0/3b/82/a03b82a03e4aa60c3ad0ef3d98983ff5.jpg",    
+        category: "",
+        text: "" 
+      } 
   
   
   
   };
-    this.handleChange = this.handleChange.bind(this);
-  }
 
-  handleChange(value) {
-    this.setState({ text: value });
-  }
+    // this.handleChange = this.handleChange.bind(this);
+    handleInput =(fieldName, value)=> {
+      this.setState({
+        blogPosts:{
+          ...this.state.blogPosts,
+          [fieldName]: value
+        }
+      })
+
+    }
+
+  // handleChange(value) {
+  //   this.setState({ text: value });
+  // }
   handleSubmit = async e => {
     e.preventDefault()
     try {
         let response = await fetch('http://localhost:3004/author/', {
             method: 'POST',
-            body: JSON.stringify(this.state.text),
+            body: JSON.stringify(this.state.blogPosts),
             headers: {
                 'Content-type': 'application/json'
             }
@@ -33,7 +43,15 @@ export default class NewBlogPost extends Component {
 
         if (response.ok) {
             alert('OK!')
-           this.handleChange()
+            this.setState({
+              blogPosts:{
+                title: "ali",
+                cover: "https://i.pinimg.com/474x/a0/3b/82/a03b82a03e4aa60c3ad0ef3d98983ff5.jpg",  
+                category: "",
+                text: "" 
+
+              }
+            })
         } else {
             alert('ERROR')
         }
@@ -47,27 +65,37 @@ export default class NewBlogPost extends Component {
         <Form className="mt-5" onSubmit={this.handleSubmit}>
           <Form.Group controlId="blog-form" className="mt-3">
             <Form.Label>Title</Form.Label>
-            <Form.Control size="lg" placeholder="Title" />
+            <Form.Control size="lg" 
+            value={this.state.blogPosts.title}
+            onChange={(e)=> this.handleInput('title', e.target.value)}
+            />
           </Form.Group>
           <Form.Group controlId="blog-form" className="mt-3">
             <Form.Label>Cover</Form.Label>
-            <Form.Control size="lg"  />
+            <Form.Control size="lg" 
+            value={this.state.blogPosts.cover}
+            onChange={(e)=> this.handleInput('cover', e.target.value)}
+            />
           </Form.Group>
           <Form.Group controlId="blog-category" className="mt-3">
             <Form.Label>Category</Form.Label>
-            <Form.Control size="lg" as="select">
-              <option>Category1</option>
-              <option>Category2</option>
-              <option>Category3</option>
-              <option>Category4</option>
-              <option>Category5</option>
+            <Form.Control size="lg" as="select"
+            value={this.state.blogPosts.category}
+            onChange={(e)=> this.handleInput('category', e.target.value)}
+            
+            >
+              <option>Horror</option>
+              <option>Fantasy</option>
+              <option>Romance</option>
+              <option>Action</option>
+              <option>Adventure</option>
             </Form.Control>
           </Form.Group>
           <Form.Group controlId="blog-content" className="mt-3">
             <Form.Label>Blog Content</Form.Label>
             <ReactQuill
-              value={this.state.text}
-              onChange={this.handleChange}
+              value={this.state.blogPosts.text}
+              onChange={(e)=> this.handleInput('text', e)}
               className="new-blog-content"
             />
           </Form.Group>
