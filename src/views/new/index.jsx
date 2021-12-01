@@ -6,7 +6,14 @@ import "./styles.css";
 export default class NewBlogPost extends Component {
   constructor(props) {
     super(props);
-    this.state = { text: "" };
+    this.state = { 
+      title: "",  
+      text: "" ,
+      category: ""
+  
+  
+  
+  };
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -41,6 +48,10 @@ export default class NewBlogPost extends Component {
           <Form.Group controlId="blog-form" className="mt-3">
             <Form.Label>Title</Form.Label>
             <Form.Control size="lg" placeholder="Title" />
+          </Form.Group>
+          <Form.Group controlId="blog-form" className="mt-3">
+            <Form.Label>Cover</Form.Label>
+            <Form.Control size="lg"  />
           </Form.Group>
           <Form.Group controlId="blog-category" className="mt-3">
             <Form.Label>Category</Form.Label>
