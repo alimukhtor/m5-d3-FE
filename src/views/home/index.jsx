@@ -16,7 +16,7 @@ export default class Home extends Component {
 
   fetchPosts = async () => {
     try {
-      const response = await fetch("http://localhost:3004/author/", {
+      const response = await fetch("http://localhost:3004/author/g2pcd9tkkwnuuha4/uploadAvatar", {
       
       });
   
@@ -39,20 +39,7 @@ export default class Home extends Component {
     return (
       <Container fluid="sm">
         <h1 className="blog-main-title">Welcome to the Strive Blog!</h1>
-       {/* <Card>
-          {
-            this.state.newPost.map(post => (`
-          <Card.Img variant="top" src=${post.avatar} />
-          <Card.Body>
-            <Card.Title>${post.title}</Card.Title>
-            <Card.Text>
-            ${post.category}
-            </Card.Text>
-          </Card.Body>
-`
-            ))
-          }
-        </Card>*/}
+      
         <BlogList oldPost={this.state.newPost}/>
       </Container>
     );

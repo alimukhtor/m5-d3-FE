@@ -7,7 +7,7 @@ export default class NewBlogPost extends Component {
     state = {
       blogPosts: {
         title: "",
-        cover: "https://i.pinimg.com/474x/a0/3b/82/a03b82a03e4aa60c3ad0ef3d98983ff5.jpg",    
+        cover: "https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg",    
         category: "",
         text: "" 
       } 
@@ -16,7 +16,6 @@ export default class NewBlogPost extends Component {
   
   };
 
-    // this.handleChange = this.handleChange.bind(this);
     handleInput =(fieldName, value)=> {
       this.setState({
         blogPosts:{
@@ -27,37 +26,59 @@ export default class NewBlogPost extends Component {
 
     }
 
-  // handleChange(value) {
-  //   this.setState({ text: value });
-  // }
-  handleSubmit = async e => {
-    e.preventDefault()
-    try {
-        let response = await fetch('http://localhost:3004/author/', {
-            method: 'POST',
-            body: JSON.stringify(this.state.blogPosts),
-            headers: {
-                'Content-type': 'application/json'
-            }
-        })
+  
+//   handleSubmit = async e => {
+//     e.preventDefault()
+//     try {
+//         let response = await fetch('http://localhost:3004/author/g2pcd9tkkwnuuha4/uploadAvatar', {
+//             method: 'POST',
+//             body: JSON.stringify(this.state.blogPosts),
+//             headers: {
+//                 'Content-type': 'application/json'
+//             }
+//         })
 
-        if (response.ok) {
-            alert('OK!')
-            this.setState({
-              blogPosts:{
-                title: "ali",
-                cover: "https://i.pinimg.com/474x/a0/3b/82/a03b82a03e4aa60c3ad0ef3d98983ff5.jpg",  
-                category: "",
-                text: "" 
+//         if (response.ok) {
+//             alert('OK!')
+//             this.setState({
+//               blogPosts:{
+//                 title: "ali",
+//                 cover: "http://localhost:3004/img/authors/download.jpghttps://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg",  
+//                 category: "",
+//                 text: "" 
 
-              }
-            })
-        } else {
-            alert('ERROR')
-        }
-    } catch (error) {
-        console.log(error)
+//               }
+//             })
+//         } else {
+//             alert('ERROR')
+//         }
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+
+handleFileChange = async  (e) => {
+  try {
+
+    const file = e.target.files[0]
+
+    const formData = new FormData()
+
+    formData.append('avatarPic',file)
+    let response = await fetch('http://localhost:3004/author/g2pcd9tkkwnuuha4/uploadAvatar', {
+        method: 'POST',
+        body: formData
+    })
+
+    if (response.ok) {
+        alert('OK!')
+         
+    } else {
+        alert('ERROR')
     }
+} catch (error) {
+    console.log(error)
+}
 }
   render() {
     return (
@@ -65,9 +86,15 @@ export default class NewBlogPost extends Component {
         <Form className="mt-5" onSubmit={this.handleSubmit}>
           <Form.Group controlId="blog-form" className="mt-3">
             <Form.Label>Title</Form.Label>
+
             <Form.Control size="lg" 
             value={this.state.blogPosts.title}
             onChange={(e)=> this.handleInput('title', e.target.value)}
+            />
+             <Form.Control size="lg" 
+             type="file"
+            value={this.state.blogPosts.title}
+            onChange={this.handleFileChange}
             />
           </Form.Group>
           <Form.Group controlId="blog-form" className="mt-3">
