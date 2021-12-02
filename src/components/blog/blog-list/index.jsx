@@ -6,7 +6,7 @@ export default class BlogList extends Component {
   render() {
     return (
       <Row>
-        {posts.map((post) => (
+        {this.props.oldPost.map((post) => (
           <Col md={4} style={{ marginBottom: 50 }}>
             <BlogItem key={post.title} {...post} />
           </Col>
