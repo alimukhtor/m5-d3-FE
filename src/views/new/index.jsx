@@ -30,7 +30,7 @@ export default class NewBlogPost extends Component {
 //   handleSubmit = async e => {
 //     e.preventDefault()
 //     try {
-//         let response = await fetch(`${process.env.REACT_APP_BE_REMOTE_URL}/author`, {
+//         let response = await fetch('http://localhost:3004/author/g2pcd9tkkwnuuha4/uploadAvatar', {
 //             method: 'POST',
 //             body: JSON.stringify(this.state.blogPosts),
 //             headers: {
