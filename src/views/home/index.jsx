@@ -16,8 +16,8 @@ export default class Home extends Component {
 
   fetchPosts = async () => {
     try {
-      const response = await fetch("http://localhost:3004/author/g2pcd9tkkwnuuha4/uploadAvatar", {
-      
+      const response = await fetch(`${process.env.REACT_APP_BE_REMOTE_URL}/author`, {
+        "Content-Type":"application/json"
       });
   
       console.log(response);
@@ -32,7 +32,7 @@ export default class Home extends Component {
       }
       
     } catch (error) {
-      console.log(error);
+      console.log("error is ", error);
     }
   };
   render() {
