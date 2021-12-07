@@ -65,7 +65,7 @@ handleFileChange = async  (e) => {
     const formData = new FormData()
 
     formData.append('avatarPic',file)
-    let response = await fetch(`${process.env.REACT_APP_BE_REMOTE_URL}/author/g2pcd9tkkwnuuha4/uploadAvatar`, {
+    let response = await fetch(`${process.env.REACT_APP_BE_REMOTE_URL}/author/g2pcd9tkkwnvepv4/uploadAvatar`, {
         method: 'POST',
         body: formData
     })
