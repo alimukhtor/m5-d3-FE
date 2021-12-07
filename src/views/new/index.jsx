@@ -27,35 +27,35 @@ export default class NewBlogPost extends Component {
     }
 
   
-  handleSubmit = async e => {
-    e.preventDefault()
-    try {
-        let response = await fetch(`${process.env.REACT_APP_BE_REMOTE_URL}/author/g2pcd9tkkwnuuha4/uploadAvatar`, {
-            method: 'POST',
-            body: JSON.stringify(this.state.blogPosts),
-            headers: {
-                'Content-type': 'application/json'
-            }
-        })
+//   handleSubmit = async e => {
+//     e.preventDefault()
+//     try {
+//         let response = await fetch(`${process.env.REACT_APP_BE_REMOTE_URL}/author`, {
+//             method: 'POST',
+//             body: JSON.stringify(this.state.blogPosts),
+//             headers: {
+//                 'Content-type': 'application/json'
+//             }
+//         })
 
-        if (response.ok) {
-            alert('OK!')
-            this.setState({
-              blogPosts:{
-                title: "ali",
-                cover: "http://localhost:3004/img/authors/download.jpghttps://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg",  
-                category: "",
-                text: "" 
+//         if (response.ok) {
+//             alert('OK!')
+//             this.setState({
+//               blogPosts:{
+//                 title: "ali",
+//                 cover: "http://localhost:3004/img/authors/download.jpghttps://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg",  
+//                 category: "",
+//                 text: "" 
 
-              }
-            })
-        } else {
-            alert('ERROR')
-        }
-    } catch (error) {
-        console.log(error)
-    }
-}
+//               }
+//             })
+//         } else {
+//             alert('ERROR')
+//         }
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
 
 handleFileChange = async  (e) => {
   try {
@@ -83,7 +83,7 @@ handleFileChange = async  (e) => {
   render() {
     return (
       <Container className="new-blog-container">
-        <Form className="mt-5" onSubmit={this.handleSubmit}>
+        <Form className="mt-5" onSubmit={this.handleFileChange}>
           <Form.Group controlId="blog-form" className="mt-3">
             <Form.Label>Title</Form.Label>
 
