@@ -22,7 +22,7 @@ export default class Home extends Component {
       console.log(response);
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        console.log("DATA", data);
         this.setState({
           newPost: data,
         });
