@@ -16,8 +16,7 @@ export default class Home extends Component {
 
   fetchPosts = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_BE_REMOTE_URL}/author`, {
-        "Content-Type":"application/json"
+      const response = await fetch(`${process.env.REACT_APP_BE_REMOTE_URL}/author/g2pcd9tkkwnuuha4/uploadAvatar`, {
       });
   
       console.log(response);
