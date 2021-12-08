@@ -93,8 +93,10 @@ export default class NewBlogPost extends Component {
             />
              <Form.Control size="lg" 
              type="text"
+            //  type="file"
             value={this.state.blogPosts.title}
-            onChange={this.handleFileChange}
+            // onChange={this.handleFileChange}
+            onChange={this.handleSubmit}
             />
           </Form.Group>
           <Form.Group controlId="blog-form" className="mt-3">
