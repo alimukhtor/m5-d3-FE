@@ -57,29 +57,29 @@ export default class NewBlogPost extends Component {
     }
 }
 
-// handleFileChange = async  (e) => {
-//   try {
+handleFileChange = async  (e) => {
+  try {
 
-//     const file = e.target.files[0]
+    const file = e.target.files[0]
 
-//     const formData = new FormData()
+    const formData = new FormData()
 
-//     formData.append('avatarPic',file)
-//     let response = await fetch(`${process.env.REACT_APP_BE_REMOTE_URL}/author/g2pcd9tkkwnvepv4/uploadAvatar`, {
-//         method: 'POST',
-//         body: formData
-//     })
+    formData.append('avatarPic',file)
+    let response = await fetch(`${process.env.REACT_APP_BE_REMOTE_URL}/author/g2pcd9tkkwnvepv4/uploadAvatar`, {
+        method: 'POST',
+        body: formData
+    })
 
-//     if (response.ok) {
-//         alert('OK!')
+    if (response.ok) {
+        alert('OK!')
          
-//     } else {
-//         alert('ERROR')
-//     }
-// } catch (error) {
-//     console.log(error)
-// }
-// }
+    } else {
+        alert('ERROR')
+    }
+} catch (error) {
+    console.log(error)
+}
+}
   render() {
     return (
       <Container className="new-blog-container">
@@ -89,14 +89,14 @@ export default class NewBlogPost extends Component {
 
             <Form.Control size="lg" 
             value={this.state.blogPosts.title}
+            type="text"
             onChange={(e)=> this.handleInput('title', e.target.value)}
             />
              <Form.Control size="lg" 
-             type="text"
-            //  type="file"
+             type="file"
             value={this.state.blogPosts.title}
             // onChange={this.handleFileChange}
-            onChange={this.handleSubmit}
+            onChange={this.handleFileChange}
             />
           </Form.Group>
           <Form.Group controlId="blog-form" className="mt-3">
