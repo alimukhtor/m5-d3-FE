@@ -41,7 +41,7 @@ export default class Home extends Component {
         <h1 className="blog-main-title">Welcome to the Strive Blog!</h1>
       
         <BlogList oldPost={this.state.newPost}/>
-        <NewBlogPost oldPost={this.state.newPost}/>
+        {/* <NewBlogPost oldPost={this.state.newPost}/> */}
       </Container>
     );
   }
