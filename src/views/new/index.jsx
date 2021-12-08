@@ -89,15 +89,13 @@ export default class NewBlogPost extends Component {
 
             <Form.Control size="lg" 
             value={this.state.blogPosts.title}
+            type="text"
             onChange={(e)=> this.handleInput('title', e.target.value)}
             />
-             <Form.Control size="lg" 
-             type="text"
-            //  type="file"
-            // value={this.state.blogPosts.title}
-            // onChange={this.handleFileChange}
-            // onChange={this.handleSubmit}
-            />
+             {/* <Form.Control size="lg" 
+             type="file"
+            onChange={this.handleFileChange}
+            /> */}
           </Form.Group>
           <Form.Group controlId="blog-form" className="mt-3">
             <Form.Label>Cover</Form.Label>
