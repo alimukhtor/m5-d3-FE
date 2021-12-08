@@ -92,7 +92,7 @@ export default class NewBlogPost extends Component {
             onChange={(e)=> this.handleInput('title', e.target.value)}
             />
              <Form.Control size="lg" 
-             type="file"
+             type="text"
             value={this.state.blogPosts.title}
             onChange={this.handleFileChange}
             />
