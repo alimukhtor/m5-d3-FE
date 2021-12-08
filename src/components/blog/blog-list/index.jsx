@@ -8,8 +8,6 @@ export default class BlogList extends Component {
       <Row>
         {this.props.oldPost.map((post) => (
           <>
-          <h1>post.title</h1>
-          <h1>post.avatar</h1>
           <Col md={4} style={{ marginBottom: 50 }}>
             <BlogItem key={post.title} {...post} />
           </Col>
